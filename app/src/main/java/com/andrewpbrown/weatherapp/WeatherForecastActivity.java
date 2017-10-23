@@ -52,6 +52,7 @@ public class WeatherForecastActivity extends AppCompatActivity implements Weathe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("London Weather");
         setContentView(R.layout.activity_weather_forcast);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

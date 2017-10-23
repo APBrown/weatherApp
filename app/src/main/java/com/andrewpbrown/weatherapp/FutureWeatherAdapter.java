@@ -21,10 +21,8 @@ class FutureWeatherAdapter extends ArrayAdapter<WeatherForecastDto.WeatherInfoDt
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // Get the data item for this position
         WeatherForecastDto.WeatherInfoDto dto = getItem(position);
         WeatherForecastDto.Weather weatherInfo = dto.weather.get(0);
-        // Check if an existing view is being reused, otherwise inflate the view
         FutureWeatherViewHolder viewHolder;
         Context context = getContext();
         if (convertView != null) {
