@@ -23,18 +23,31 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/todays_weather"/>
+    <ProgressBar
+        android:id="@+id/spinner"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"/>
+    <LinearLayout
+        android:id="@+id/todays_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+        <include
+            layout="@layout/todays_weather"/>
 
-        <ListView
-            android:id="@+id/future_weather_list"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-           />
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/future_weather_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       />
 
     <!--<include layout="@layout/content_weather_forcast"/>-->
 

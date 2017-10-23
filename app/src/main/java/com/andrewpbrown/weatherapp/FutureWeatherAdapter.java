@@ -10,9 +10,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class FutureWeatherAdapter extends ArrayAdapter<WeatherForecastDto.WeatherInfoDto> {
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-    public FutureWeatherAdapter(Context context, ArrayList<WeatherForecastDto.WeatherInfoDto> list) {
+class FutureWeatherAdapter extends ArrayAdapter<WeatherForecastDto.WeatherInfoDto> {
+
+    FutureWeatherAdapter(Context context, ArrayList<WeatherForecastDto.WeatherInfoDto> list) {
         super(context, 0, list);
     }
 
@@ -22,23 +25,44 @@ public class FutureWeatherAdapter extends ArrayAdapter<WeatherForecastDto.Weathe
         WeatherForecastDto.WeatherInfoDto dto = getItem(position);
         WeatherForecastDto.Weather weatherInfo = dto.weather.get(0);
         // Check if an existing view is being reused, otherwise inflate the view
+        FutureWeatherViewHolder viewHolder;
         Context context = getContext();
-        if (convertView == null) {
+        if (convertView != null) {
+            viewHolder = new FutureWeatherViewHolder(convertView);
+        } else {
             convertView = LayoutInflater.from(context).inflate(R.layout.future_weather, parent, false);
+            viewHolder = new FutureWeatherViewHolder(convertView);
+            convertView.setTag(viewHolder);
         }
-
-        ImageView weatherIcon = (ImageView) convertView.findViewById(R.id.weather_icon);
-        weatherIcon.setImageDrawable(CustomUtils.getImageResource(context, weatherInfo.getIcon()));
-
-        TextView dateTextView = (TextView) convertView.findViewById(R.id.date);
-        dateTextView.setText(dto.dateTimeString);
-        TextView weatherTextView = (TextView) convertView.findViewById(R.id.weather);
-        weatherTextView.setText(weatherInfo.description);
-        TextView windSpeedTextView = (TextView) convertView.findViewById(R.id.wind_speed);
-        windSpeedTextView.setText(String.format("%.2fmph", CustomUtils.convertWeatherToMph(dto.wind.speed)));
-        TextView temperatureTextView = (TextView) convertView.findViewById(R.id.temperature);
-        temperatureTextView.setText(String.format("%.0f°C - %.0f°C", dto.main.minTemp, dto.main.maxTemp));
+        viewHolder.weatherIcon.setImageDrawable(CustomUtils.getImageResource(context, weatherInfo.getIcon()));
+        viewHolder.dateTextView.setText(dto.dateTimeString);
+        viewHolder.weatherTextView.setText(weatherInfo.description);
+        viewHolder.windSpeedTextView.setText(String.format("%.2fmph", CustomUtils.convertWeatherToMph(dto.wind.speed)));
+        viewHolder.temperatureTextView.setText(String.format("%.0f°C - %.0f°C", dto.main.minTemp, dto.main.maxTemp));
 
         return convertView;
+    }
+
+    class FutureWeatherViewHolder {
+
+        @BindView(R.id.weather_icon)
+        ImageView weatherIcon;
+
+        @BindView(R.id.date)
+        TextView dateTextView;
+
+        @BindView(R.id.weather)
+        TextView weatherTextView;
+
+        @BindView(R.id.wind_speed)
+        TextView windSpeedTextView;
+
+        @BindView(R.id.temperature)
+        TextView temperatureTextView;
+
+        private FutureWeatherViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
+
     }
 }
