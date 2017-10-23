@@ -2,23 +2,22 @@ package com.andrewpbrown.weatherapp;
 
 import java.util.ArrayList;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
-
 class WeatherForecastPresenter {
 
     private WeatherForecastView view;
-    private WeatherForecastProvider provider;
+    WeatherForecastProvider provider;
+    AppSchedulerManager appSchedulerManager;
 
-    WeatherForecastPresenter(WeatherForecastView view) {
+    WeatherForecastPresenter(WeatherForecastView view, AppSchedulerManager appSchedulerManager) {
         this.view = view;
         provider = new WeatherForecastProvider();
+        this.appSchedulerManager = appSchedulerManager;
     }
 
     void getWeatherReport() {
         provider.getWeatherForecast()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(appSchedulerManager.io)
+                .observeOn(appSchedulerManager.mainThread)
                 .subscribe(this::onWeatherDetailsLoaded, this::onErrorRetrievingWeatherDetails);
     }
 
@@ -32,7 +31,7 @@ class WeatherForecastPresenter {
     }
 
     private ArrayList<WeatherForecastDto.WeatherInfoDto> getFutureWeatherList(WeatherForecastDto dto) {
-        ArrayList<WeatherForecastDto.WeatherInfoDto> futureWeather = dto.weatherInformation;
+        ArrayList<WeatherForecastDto.WeatherInfoDto> futureWeather = dto.getWeatherInfo();
         futureWeather.remove(0);
         return futureWeather;
     }

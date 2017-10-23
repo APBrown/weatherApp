@@ -1,7 +1,7 @@
 package com.andrewpbrown.weatherapp;
 
-import io.reactivex.Observable;
 import retrofit2.http.GET;
+import rx.Observable;
 
 interface WeatherForecastRestClient {
 

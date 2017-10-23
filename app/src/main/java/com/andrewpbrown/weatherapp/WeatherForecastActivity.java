@@ -57,7 +57,7 @@ public class WeatherForecastActivity extends AppCompatActivity implements Weathe
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
 
-        presenter = new WeatherForecastPresenter(this);
+        presenter = new WeatherForecastPresenter(this, AppSchedulerManager.getMainSchedulerManager());
         presenter.getWeatherReport();
     }
 
