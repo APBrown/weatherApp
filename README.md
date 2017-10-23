@@ -18,9 +18,21 @@ Once the project has been downloaded you may open the projetc with your IDE.
 You can run both the app and tests form the IDE.
 
 ## SCREENSHOTS
+London Weather Loaded
+
+![Weather Loaded](https://github.com/APBrown/weatherApp/blob/master/Screenshots/Weather%20Loaded.png "Weather Loaded")
+
+Weather Loading
+
+![Weather Loading](https://github.com/APBrown/weatherApp/blob/master/Screenshots/Weather%20Loading.png "Weather Loaded")
+
+Error message
+
+![Error Message](https://github.com/APBrown/weatherApp/blob/master/Screenshots/Error%20Message.png "Error Message")
+https://github.com/APBrown/weatherApp/blob/master/Screenshots/Weather%20Loading.png
 
 ## IMPROVEMENTS / TECH DEBT / FEATURES / FUTURE UPDATES
-I am usually my own worst critic so i believe there is a lot I could improve in the app given some more time.
+I am my own worst critic and very critical of my own work, so i believe there is a lot I could improve in the app given some more time.
 
 - Updating from rxjava to rxjava2: The main reason for using rxjava was that, 
 given the time constraints i prefered to use something i have already used, rather than something that would need more time.
