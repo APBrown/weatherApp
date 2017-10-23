@@ -22,7 +22,7 @@ class FutureWeatherAdapter extends ArrayAdapter<WeatherForecastDto.WeatherInfoDt
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         WeatherForecastDto.WeatherInfoDto dto = getItem(position);
-        WeatherForecastDto.Weather weatherInfo = dto.weather.get(0);
+        WeatherForecastDto.WeatherDto weatherInfo = dto.weather.get(0);
         FutureWeatherViewHolder viewHolder;
         Context context = getContext();
         if (convertView != null) {

@@ -17,19 +17,19 @@ class WeatherForecastDto {
     class WeatherInfoDto {
 
         @SerializedName("main")
-        Main main;
+        MainDto main;
 
         @SerializedName("weather")
-        List<Weather> weather;
+        List<WeatherDto> weather;
 
         @SerializedName("wind")
-        Wind wind;
+        WindDto wind;
 
         @SerializedName("dt_txt")
         String dateTimeString;
     }
 
-    class Main {
+    class MainDto {
 
         @SerializedName("humidity")
         int humidity;
@@ -41,7 +41,7 @@ class WeatherForecastDto {
         double maxTemp;
     }
 
-    class Weather {
+    class WeatherDto {
 
         @SerializedName("description")
         String description;
@@ -54,7 +54,7 @@ class WeatherForecastDto {
         }
     }
 
-    class Wind {
+    class WindDto {
 
         @SerializedName("speed")
         double speed;
@@ -125,16 +125,16 @@ class WeatherForecastDto {
  * list.main.grnd_level Atmospheric pressure on the ground level, hPa
  * list.main.humidity Humidity, %
  * list.main.temp_kf Internal parameter
- * list.weather (more info Weather condition codes)
- * list.weather.id Weather condition id
+ * list.weather (more info WeatherDto condition codes)
+ * list.weather.id WeatherDto condition id
  * list.weather.main Group of weather parameters (Rain, Snow, Extreme etc.)
- * list.weather.description Weather condition within the group
- * list.weather.icon Weather icon id
+ * list.weather.description WeatherDto condition within the group
+ * list.weather.icon WeatherDto icon id
  * list.clouds
  * list.clouds.all Cloudiness, %
  * list.wind
- * list.wind.speed Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.
- * list.wind.deg Wind direction, degrees (meteorological)
+ * list.wind.speed WindDto speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.
+ * list.wind.deg WindDto direction, degrees (meteorological)
  * list.rain
  * list.rain.3h Rain volume for last 3 hours, mm
  * list.snow
@@ -164,16 +164,16 @@ class WeatherForecastDto {
  list.main.grnd_level Atmospheric pressure on the ground level, hPa
  list.main.humidity Humidity, %
  list.main.temp_kf Internal parameter
- list.weather (more info Weather condition codes)
- list.weather.id Weather condition id
+ list.weather (more info WeatherDto condition codes)
+ list.weather.id WeatherDto condition id
  list.weather.main Group of weather parameters (Rain, Snow, Extreme etc.)
- list.weather.description Weather condition within the group
- list.weather.icon Weather icon id
+ list.weather.description WeatherDto condition within the group
+ list.weather.icon WeatherDto icon id
  list.clouds
  list.clouds.all Cloudiness, %
  list.wind
- list.wind.speed Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.
- list.wind.deg Wind direction, degrees (meteorological)
+ list.wind.speed WindDto speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.
+ list.wind.deg WindDto direction, degrees (meteorological)
  list.rain
  list.rain.3h Rain volume for last 3 hours, mm
  list.snow
